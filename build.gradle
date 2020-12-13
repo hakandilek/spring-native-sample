@@ -1,7 +1,7 @@
 plugins {
-  id 'org.springframework.boot' version '2.4.0'
+  id 'org.springframework.boot' version '2.4.1'
   id 'io.spring.dependency-management' version '1.0.10.RELEASE'
-  id 'com.github.ayltai.spring-graalvm-native-plugin' version '1.4.0'
+  id 'com.github.ayltai.spring-graalvm-native-plugin' version '1.4.1'
   id 'org.barfuin.gradle.jacocolog' version '1.2.3'
   id 'java'
 }
@@ -21,6 +21,7 @@ repositories {
 dependencies {
   implementation 'org.springframework.boot:spring-boot-starter-webflux'
   implementation 'javax.validation:validation-api'
+  implementation 'org.springframework.experimental:spring-graalvm-native:0.8.3'
 
   testImplementation('org.springframework.boot:spring-boot-starter-test') {
     exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
@@ -39,18 +40,21 @@ test {
 
 nativeImage {
   mainClassName = 'com.example.SpringNativeSampleApplication'
-  traceClassInitializationEnabled   = true
+  traceClassInitializationFor=[
+
+  ]
   reportExceptionStackTraces = true
   removeUnusedAutoConfig     = true
-  removeYamlSupport          = true
+  removeYamlSupport          = false
   removeSpelSupport          = true
+  removeXmlSupport           = true
   removeJmxSupport           = true
+  enableHttp                 = true
+  enableHttps                = true
+  springNativeVerbose        = true
   verbose                    = true
   printAnalysisCallTree      = true
   initializeAtBuildTime = [
-    'reactor.core.publisher.Mono',
-    'reactor.core.publisher.MonoJust',
-    'com.fasterxml.jackson'
   ]
-  maxHeapSize                = '3272M'
+  // maxHeapSize                = '3272M'
 }
