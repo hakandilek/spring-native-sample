@@ -1,0 +1,7 @@
+entities:
+  - name: Product
+    fields:
+      - name: name
+        type: String
+      - name: code
+        type: String

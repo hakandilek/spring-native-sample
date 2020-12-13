@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: spring-native-sample
+  mvc:
+    favicon:
+      enabled: false
+  resources:
+    add-mappings: false
+  r2dbc:
+    url: 'r2dbc:postgresql://postgresdb:5432/spring-native-sample'
+    username: dbuser
+    password: dbpassword
+    pool:
+      initial-size: 2
+      max-size: 10
+logging:
+  file: build/application.log
+  level:
+    org.springframework: INFO
+    com.example: INFO
+application:
+  db:
+    init-script: db/migration/V0__init.sql
+    clean-script: ''

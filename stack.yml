@@ -1,0 +1,7 @@
+name: spring
+version: 0.1
+aspects:
+  - docker-vm
+  - docker-native
+  - reactive-postgresql
+  - umlmodel

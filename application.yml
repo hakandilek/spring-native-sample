@@ -1,0 +1,4 @@
+app:
+  name: spring-native-sample
+  package: com.example
+  version: 0.1.0-SNAPSHOT

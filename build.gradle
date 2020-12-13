@@ -1,0 +1,56 @@
+plugins {
+  id 'org.springframework.boot' version '2.4.0'
+  id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+  id 'com.github.ayltai.spring-graalvm-native-plugin' version '1.4.0'
+  id 'org.barfuin.gradle.jacocolog' version '1.2.3'
+  id 'java'
+}
+
+group 'com.example'
+version '0.1.0-SNAPSHOT'
+
+sourceCompatibility = 8
+targetCompatibility = 8
+
+repositories {
+  jcenter()
+	mavenCentral()
+	maven { url 'https://repo.spring.io/milestone' }
+}
+
+dependencies {
+  implementation 'org.springframework.boot:spring-boot-starter-webflux'
+  implementation 'javax.validation:validation-api'
+
+  testImplementation('org.springframework.boot:spring-boot-starter-test') {
+    exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+  }
+  testImplementation 'io.projectreactor:reactor-test'
+
+  implementation 'org.springframework.boot:spring-boot-starter-data-r2dbc'
+  implementation 'io.r2dbc:r2dbc-postgresql'
+  testImplementation 'io.r2dbc:r2dbc-h2'
+  //mastic-pin-gradle-dependency
+}
+
+test {
+  useJUnitPlatform()
+}
+
+nativeImage {
+  mainClassName = 'com.example.SpringNativeSampleApplication'
+  traceClassInitializationEnabled   = true
+  reportExceptionStackTraces = true
+  removeUnusedAutoConfig     = true
+  removeYamlSupport          = true
+  removeSpelSupport          = true
+  removeJmxSupport           = true
+  verbose                    = true
+  printAnalysisCallTree      = true
+  initializeAtBuildTime = [
+    'reactor.core.publisher.Mono',
+    'reactor.core.publisher.MonoJust',
+    'com.fasterxml.jackson'
+  ]
+  maxHeapSize                = '3272M'
+}

@@ -1,0 +1,19 @@
+logging:
+  file: build/test.log
+  level:
+    com.example: DEBUG
+    org.springframework: INFO
+    org.springframework.web.reactive.result.method.annotation.RequestMappingHandlerMapping: DEBUG
+    org.springframework.web.reactive.result.method.InvocableHandlerMethod: DEBUG
+    org.springframework.test.web: DEBUG
+    io.r2dbc.h2.client: DEBUG
+spring:
+  r2dbc:
+    url: 'r2dbc:h2:mem:///spring-native-sample'
+    pool:
+      initial-size: 4
+      max-size: 4
+application:
+  db:
+    init-script: db/migration/V0__init.sql
+    clean-script: db/migration/V0__cleanup.sql

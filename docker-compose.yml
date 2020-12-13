@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+
+  postgresdb:
+    image: "postgres:12.5"
+    environment:
+      - POSTGRES_USER=dbuser
+      - POSTGRES_PASSWORD=dbpassword
+      - POSTGRES_DB=spring-native-sample
+    ports:
+     - "5432:5432"
+    volumes:
+     - ./data:/var/lib/postgresql/data
