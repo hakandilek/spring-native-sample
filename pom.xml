@@ -39,7 +39,7 @@
 		<dependency>
 			<groupId>org.springframework.experimental</groupId>
 			<artifactId>spring-graalvm-native</artifactId>
-			<version>0.8.3</version>
+			<version>0.8.4</version>
 		</dependency>
 
 		<dependency>
@@ -68,6 +68,14 @@
 					<image>
 						<env>
 							<BP_BOOT_NATIVE_IMAGE>true</BP_BOOT_NATIVE_IMAGE>
+							<BP_BOOT_NATIVE_IMAGE_BUILD_ARGUMENTS>
+								--verbose
+								-H:+ReportExceptionStackTraces
+								-H:+PrintAnalysisCallTree
+								-Dspring.spel.ignore=true
+								-Dspring.native.verbose=true
+								-Dspring.native.dump-config=./native-dump-config.txt
+							</BP_BOOT_NATIVE_IMAGE_BUILD_ARGUMENTS>
 						</env>
 					</image>
 				</configuration>

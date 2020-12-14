@@ -21,7 +21,7 @@ repositories {
 dependencies {
   implementation 'org.springframework.boot:spring-boot-starter-webflux'
   implementation 'javax.validation:validation-api'
-  implementation 'org.springframework.experimental:spring-graalvm-native:0.8.3'
+  implementation 'org.springframework.experimental:spring-graalvm-native:0.8.4'
 
   testImplementation('org.springframework.boot:spring-boot-starter-test') {
     exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
