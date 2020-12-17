@@ -2,7 +2,6 @@ package com.example;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Objects;
-import javax.validation.constraints.NotNull;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Persistent;
 import org.springframework.data.relational.core.mapping.Column;
@@ -16,12 +15,10 @@ public class Product {
   @Id
   private Long id;
   
-  @NotNull
   @Column("NAME")
   @JsonProperty
   private String name;
 
-  @NotNull
   @Column("CODE")
   @JsonProperty
   private String code;

@@ -2,7 +2,6 @@ package com.example;
 
 import static com.example.util.FluxUtils.wrapNotFoundIfEmpty;
 
-import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -52,13 +51,13 @@ public class ProductController {
 
   @PostMapping()
   @ResponseStatus(HttpStatus.CREATED)
-  public Mono<Product> create(@RequestBody @Valid Product product) {
+  public Mono<Product> create(@RequestBody Product product) {
     logger.debug("create({})", product);
     return repository.save(product);
   }
 
   @PutMapping("/{id}")
-  public Mono<Product> update(@PathVariable Long id, @RequestBody @Valid Product entity) {
+  public Mono<Product> update(@PathVariable Long id, @RequestBody Product entity) {
     logger.debug("create({} : {})", id, entity);
     entity.setId(id);
     return wrapNotFoundIfEmpty(repository.save(entity), "product", id);
