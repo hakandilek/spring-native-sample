@@ -2,6 +2,14 @@ version: '3.7'
 
 services:
 
+  spring-native-example:
+    image: "docker.io/library/spring-native-example:0.0.1-SNAPSHOT"
+    ports:
+     - "8080:8080"
+    depends_on:
+      - postgresdb
+
+
   postgresdb:
     image: "postgres:12.5"
     environment:
