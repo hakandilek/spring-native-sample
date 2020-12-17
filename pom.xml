@@ -33,10 +33,6 @@
 			<artifactId>r2dbc-postgresql</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>javax.validation</groupId>
-			<artifactId>validation-api</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>org.springframework.experimental</groupId>
 			<artifactId>spring-graalvm-native</artifactId>
 			<version>0.8.4</version>
