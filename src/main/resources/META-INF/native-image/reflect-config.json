@@ -1,0 +1,6 @@
+[
+  {
+    "name": "com.fasterxml.jackson.databind.ext.Java7HandlersImpl",
+    "allPublicConstructors":true
+  }
+]
