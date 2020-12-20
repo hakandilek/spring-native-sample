@@ -1,0 +1,7 @@
+[
+  {
+    "name": "org.hibernate.validator.internal.constraintvalidators.bv.NotNullValidator",
+    "allPublicConstructors": true,
+    "allDeclaredMethods":true
+  }
+]
