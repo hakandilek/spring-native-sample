@@ -16,8 +16,11 @@ spring:
 logging:
   file: build/application.log
   level:
-    org.springframework: INFO
-    com.example: INFO
+    org.springframework: DEBUG
+    com.example: DEBUG
+    org.springframework.web.reactive.result.method.annotation.RequestMappingHandlerMapping: DEBUG
+    org.springframework.web.reactive.result.method.InvocableHandlerMethod: DEBUG
+    io.r2dbc.postgresql.QUERY: DEBUG
 application:
   db:
     init-script: db/migration/V0__init.sql
